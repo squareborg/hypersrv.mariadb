@@ -1,0 +1,31 @@
+---
+# tasks file for hypersrv.mariadb
+
+- name: install mariadb
+  apt:
+    name: mariadb-server-10.0
+    state: present
+
+- name: install mariadb client
+  apt:
+    name: mariadb-client-10.0
+    state: present
+
+- name: install mysql-python
+  apt:
+    name: python-mysqldb
+    state: present
+
+- name: create app db
+  mysql_db:
+    name: "{{app_db_name}}"
+    state: present
+    
+- name: create app db user
+  mysql_user:
+    name: "{{app_db_user}}"
+    password: "{{app_db_password}}"
+    priv: "{{app_db_name}}.*:ALL"
+
+
+

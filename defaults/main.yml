@@ -1,0 +1,5 @@
+---
+# defaults file for hypersrv.mariadb
+app_db_name: app
+app_db_user: app
+app_db_password: password
